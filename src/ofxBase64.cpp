@@ -124,7 +124,7 @@ string ofxBase64::decode(const std::string &encoded_string){
 }
 
 string ofxBase64::encode(ofImage *img){
-    unsigned char * pix = img->getPixels();
+    unsigned char * pix = img->getPixels().getData();
     int iW = (int)img->getWidth();
     int iH = (int)img->getHeight();
     int nC = img->getPixelsRef().getNumChannels();
@@ -141,7 +141,7 @@ ofPixels ofxBase64::decode(string encoded_string, int w , int h, int nc){
 }
 
 void ofxBase64::savePixelsToXml(ofxXmlSettings * xml, ofPixels * pix, string tagName){
-    unsigned char * data = pix->getPixels();
+    unsigned char * data = pix->getData();
     int ww = (int)pix->getWidth();
     int hh = (int)pix->getHeight();
     int nc = pix->getNumChannels();
